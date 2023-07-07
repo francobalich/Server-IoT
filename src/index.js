@@ -1,4 +1,3 @@
-
 import { corsConfig } from './middleware/corsConfig.js'
 import express from 'express'
 import dotenv from 'dotenv'
@@ -21,11 +20,11 @@ const client = mqtt.connect(connectUrl, {
   connectTimeout: 4000,
   username: 'emqx',
   password: 'public',
-  reconnectPeriod: 1000,
+  reconnectPeriod: 1000
 })
 
 client.on('connect', () => {
-  console.log('Connected')
+  console.log('Contectado.')
 })
 // Configuración del server
 const app = express()
@@ -34,8 +33,6 @@ app.use(express.json())
 // Configuración del cors
 app.use(cors())
 app.use(corsConfig)
-
-
 
 // Rutas
 app.use('/api/', testRouter)
