@@ -1,7 +1,9 @@
+
 import { corsConfig } from './middleware/corsConfig.js'
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import { testRouter } from './routes/test.routes.js'
 dotenv.config()
 const PORT = process.env.PORT || 3000
 
@@ -14,7 +16,7 @@ app.use(cors())
 app.use(corsConfig)
 
 // Rutas
-app.use('/api/', robotRouter)
+app.use('/api/', testRouter)
 
 // Endpoints
 app.use('/', (req, res) => {
@@ -28,5 +30,5 @@ app.use((req, res, next) => {
   })
 })
 app.listen(PORT, () =>
-  console.log(`\x1B[34mServer running in \x1B[31m${PORT} port.\x1B[0m`)
+  console.log(`\x1B[34mServer running in ${PORT} port.\x1B[0m`)
 )
